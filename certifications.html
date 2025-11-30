@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Certifications - Niranjana</title>
+
+<style>
+@font-face {
+    font-family: 'Jasmine';
+    src: url('Jasmine.ttf');
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Jasmine', sans-serif;
+    font-style:italic;
+}
+
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color:white;
+}
+
+/* HEADER */
+header {
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    z-index:5;
+}
+
+nav a {
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav a:hover { color:#00a896; }
+
+/* PAGE LAYOUT */
+.page-container {
+    margin-top:150px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* HEADING */
+h2 {
+    color:black;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+/* BIG SHADED BOX */
+.big-box {
+    width:90%;
+    max-width:700px;
+    background:rgba(0,0,0,0.55);
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px; /* small gap between buttons */
+}
+
+/* CERTIFICATE BUTTONS */
+.cert-btn {
+    background:#00a896;
+    color:black;
+    font-size:18px;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.cert-btn:hover {
+    background:#00917c;
+}
+
+/* REVEAL EFFECT */
+.show {
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+
+/* NOTE */
+.note {
+    margin-top:15px;
+    color:white;
+    font-size:14px;
+    text-align:center;
+}
+
+/* POPUP IMAGE */
+#popup {
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+}
+
+#popup img {
+    width:90%;
+    max-width:500px;
+    border-radius:10px;
+}
+
+#popup-close {
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:45px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 8px black; /* makes it more visible */
+    cursor:pointer;
+}
+
+#popup-close:hover {
+    color:#00a896;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <h2>Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="page-container">
+
+  <h2>Certifications</h2> <!-- TITLE ABOVE BOX -->
+
+  <div class="big-box">
+
+      <div class="cert-btn" onclick="showImage('cert1.jpg')">Internship in Full Stack Development - Media Wave Technologies</div>
+
+      <div class="cert-btn" onclick="showImage('cert2.jpg')">Implant Training in Web Development - Code Bind Technologies</div>
+
+      <div class="cert-btn" onclick="showImage('cert3.jpg')">AWS Cloud Practitioner Essentials - AWS Skill Builder</div>
+
+      <div class="cert-btn" onclick="showImage('cert4.jpg')">AWS Technical Essentials - AWS Skill Builder</div>
+
+      <div class="cert-btn" onclick="showImage('cert5.jpg')">Cloud Computing Fundamentals - IBM Skill Builder</div>
+
+      <div class="cert-btn" onclick="showImage('cert6.jpg')">Elements of AI - Helsinki University</div>
+
+      <div class="cert-btn" onclick="showImage('cert7.jpg')">Data Fundamentals - IBM Skill Builder</div>
+
+      <!-- NOTE INSIDE SHADED BOX -->
+      <p class="note">* If you want to view the certificate, click the particular certificate name *</p>
+
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+    <span id="popup-close" onclick="closePopup()">×</span>
+    <img id="popup-img" src="">
+</div>
+
+<script>
+// Line-by-line reveal
+const buttons = document.querySelectorAll('.cert-btn');
+let i = 0;
+
+function revealButtons(){
+    if(i < buttons.length){
+        buttons[i].classList.add('show');
+        i++;
+        setTimeout(revealButtons, 200);
+    }
+}
+window.onload = revealButtons;
+
+// Popup functions
+function showImage(img){
+    document.getElementById("popup-img").src = img;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>

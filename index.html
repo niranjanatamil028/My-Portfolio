@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home - Niranjana</title>
+
+<style>
+/* Load Jasmine Font */
+@font-face {
+  font-family: 'Jasmine';
+  src: url('Jasmine.ttf') format('truetype');
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Jasmine', sans-serif;
+  font-style:italic;
+}
+
+body {
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:white;
+  scroll-behavior: smooth;
+}
+
+header {
+  width:100%;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+header h2{
+  color:white;
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav a:hover { 
+  color:#00a896;  /* Peacock green */
+}
+
+/* Home Layout */
+.home-container {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  padding:150px 40px;
+  gap:40px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.home-text {
+  flex:1;
+  max-width:600px;
+  background: rgba(0,0,0,0.5); /* Light shaded box */
+  padding:25px;
+  border-radius:12px;
+}
+
+.profile-pic img {
+  width:100%;
+  max-width:350px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.highlight-name {
+  color:#00a896; /* Peacock green */
+  font-weight:bold;
+}
+
+.line {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s, transform 0.8s;
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+.line.show {
+  opacity:1;
+  transform: translateY(0);
+}
+
+@media (max-width:768px){
+  .home-container{
+    flex-direction:column-reverse;
+    text-align:center;
+  }
+  .profile-pic img{
+    max-width:200px;
+    margin-bottom:20px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar (APPEARS ON ALL PAGES) -->
+<header>
+  <h2>Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Home Content -->
+<section class="home-container">
+  <div class="home-text" id="homeText"></div>
+
+  <div class="profile-pic">
+    <img src="Niranjana.jpg" alt="Niranjana Profile Picture">
+  </div>
+</section>
+
+<script>
+// Lines for Home page reveal
+const homeLines = [
+  "<h1>Hello, I'm <span class='highlight-name'>Niranjana T</span></h1>",
+  "<p>A Pre-Final Year Computer Science and Engineering student, and a passionate developer & learner.</p>"
+];
+
+const homeContainer = document.getElementById('homeText');
+
+let i = 0;
+function revealHomeLine() {
+  if(i < homeLines.length){
+    const div = document.createElement('div');
+    div.classList.add('line');
+    div.innerHTML = homeLines[i];
+    homeContainer.appendChild(div);
+    setTimeout(()=>{ div.classList.add('show'); }, 50);
+    i++;
+    setTimeout(revealHomeLine, 500);
+  }
+}
+
+window.addEventListener('load', revealHomeLine);
+</script>
+
+</body>
+</html>

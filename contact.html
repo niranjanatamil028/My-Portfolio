@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact - Niranjana</title>
+
+<style>
+@font-face {
+    font-family:'Jasmine';
+    src:url('Jasmine.ttf');
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Jasmine', sans-serif;
+    font-style:italic;
+}
+
+body{
+    background:url('background.jpg') no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+}
+
+header{
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    z-index:5;
+}
+
+nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+nav a:hover{ color:#00a896; }
+
+.page-container{
+    margin-top:150px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Heading */
+h2{
+    color:black;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+/* Shaded background box */
+.big-box{
+    width:90%;
+    max-width:600px;
+    background:rgba(0,0,0,0.55);
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* Individual contact boxes */
+.contact-item{
+    background:#00a896;
+    color:black;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.4s;
+}
+
+.contact-item a{
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+}
+.contact-item a:hover{
+    color:white;
+}
+
+/* Reveal animation */
+.show{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="page-container">
+    <h2>Contact Me</h2>
+
+    <div class="big-box">
+
+        <div class="contact-item">📞 Mobile: 9360352494</div>
+
+        <div class="contact-item">
+            📧 Email:
+            <a href="mailto:niranjanatamil028@gmail.com">
+                niranjanatamil028@gmail.com
+            </a>
+        </div>
+
+        <div class="contact-item">
+            🔗 LinkedIn:
+            <a href="https://www.linkedin.com/in/niranjana-tamilenthi" target="_blank">
+                https://www.linkedin.com/in/niranjana-tamilenthi
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+// line-by-line reveal
+const items = document.querySelectorAll('.contact-item');
+let i = 0;
+
+function revealNext(){
+    if(i < items.length){
+        items[i].classList.add('show');
+        i++;
+        setTimeout(revealNext, 200);
+    }
+}
+window.onload = revealNext;
+</script>
+
+</body>
+</html>

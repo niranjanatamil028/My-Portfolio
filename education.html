@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Education - Niranjana</title>
+
+<style>
+/* Load Jasmine font */
+@font-face {
+    font-family: 'Jasmine';
+    src: url('Jasmine.ttf') format('truetype');
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Jasmine', sans-serif;
+    font-style:italic;
+}
+
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color:white;
+    scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+header {
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    z-index:10;
+}
+
+nav a {
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav a:hover { color:#00a896; }
+
+/* Page Layout */
+.container {
+    padding:150px 40px;
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+h2 {
+    color:black;
+    margin-bottom:20px;
+    font-size:32px;
+}
+
+/* Education Boxes */
+.education-box {
+    background: rgba(0,0,0,0.5); /* Shaded box */
+    padding:25px;
+    border-radius:12px;
+    margin-top:20px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.8s, transform 0.8s;
+}
+
+.education-box.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* School Name */
+.school-name {
+    color:#00a896; /* Peacock green */
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+/* Details */
+.details {
+    color:white;
+    font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+  <h2 style="color:white;">Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Content -->
+<div class="container">
+
+  <h2>Education</h2>
+
+  <div class="education-box">
+    <div class="school-name">Velammal Engineering College, Chennai</div>
+    <div class="details">B.Tech CSE (2023-Present)</div>
+    <div class="details">CGPA: 7.77</div>
+  </div>
+
+  <div class="education-box">
+    <div class="school-name">St. Isabel HR Sec School, Pattukottai</div>
+    <div class="details">Higher Secondary (2021-2023)</div>
+    <div class="details">Percentage: 70%</div>
+  </div>
+
+  <div class="education-box">
+    <div class="school-name">Reena Mercy Matriculation School</div>
+    <div class="details">Secondary (2020-2021)</div>
+  </div>
+
+</div>
+
+<script>
+// Reveal education boxes line-by-line
+const boxes = document.querySelectorAll('.education-box');
+let index = 0;
+
+function revealNextBox() {
+    if(index < boxes.length){
+        boxes[index].classList.add('show');
+        index++;
+        setTimeout(revealNextBox, 500);
+    }
+}
+
+window.addEventListener('load', revealNextBox);
+</script>
+
+</body>
+</html>

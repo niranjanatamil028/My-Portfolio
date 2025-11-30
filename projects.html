@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Projects - Niranjana</title>
+
+<style>
+@font-face {
+    font-family:'Jasmine';
+    src:url('Jasmine.ttf');
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Jasmine',sans-serif;
+    font-style:italic;
+}
+
+body{
+    background:url('background.jpg') no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+}
+
+header{
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    z-index:5;
+}
+
+nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+nav a:hover{ color:#00a896; }
+
+.page-container{
+    margin-top:150px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* HEADING */
+h2{
+    color:black;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+/* BIG SHADED BOX */
+.big-box{
+    width:90%;
+    max-width:700px;
+    background:rgba(0,0,0,0.55);
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* PROJECT BUTTONS */
+.project-btn{
+    background:#00a896;
+    color:black;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+    font-size:18px;
+    opacity:0;
+    transform:translateY(20px);
+}
+.project-btn:hover{
+    background:#00917c;
+}
+
+/* LINE REVEAL */
+.show{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+
+/* NOTE */
+.note{
+    color:white;
+    text-align:center;
+    margin-top:10px;
+}
+
+/* POPUP */
+#popup{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#popup-content{
+    background:white;
+    color:black;
+    padding:30px;
+    width:100%;
+    max-width:500px;
+    border-radius:15px;
+    font-style:normal;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    position: relative;
+}
+
+/* CLOSE BUTTON */
+#popup-close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:40px;
+    font-weight:bold;
+    color:white;
+    cursor:pointer;
+    text-shadow:0 0 6px black;
+}
+#popup-close:hover{ color:#00a896; }
+
+/* POPUP TEXT */
+.popup-title{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:12px;
+    text-align:center;
+}
+.popup-item{
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+/* Popup live link as button */
+.popup-link-button {
+    display: inline-block;
+    background: #00a896;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.popup-link-button:hover {
+    background: #00917c;
+    color: white;
+}
+
+/* RESPONSIVE FOR MOBILE */
+@media (max-width:600px){
+    #popup-content{
+        padding: 20px;
+    }
+    .popup-title{
+        font-size:20px;
+    }
+    .popup-item{
+        font-size:16px;
+    }
+    .popup-link-button{
+        font-size:16px;
+        padding:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="page-container">
+
+    <h2>Projects</h2>
+
+    <div class="big-box">
+
+        <div class="project-btn" onclick="openProject(1)">Personal Portfolio Website</div>
+        <div class="project-btn" onclick="openProject(2)">Online Quiz System</div>
+        <div class="project-btn" onclick="openProject(3)">Car Rental Website (Front-End)</div>
+        <div class="project-btn" onclick="openProject(4)">Space Invaders Game (Pygame)</div>
+
+        <!-- NOTE INSIDE SHADED BOX -->
+        <p class="note">* If you want more details, click the particular project name *</p>
+
+    </div>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+    <span id="popup-close" onclick="closePopup()">×</span>
+    <div id="popup-content"></div>
+</div>
+
+<script>
+/* LINE BY LINE REVEAL */
+const items = document.querySelectorAll('.project-btn');
+let i = 0;
+function revealNext(){
+    if(i < items.length){
+        items[i].classList.add('show');
+        i++;
+        setTimeout(revealNext, 200);
+    }
+}
+window.onload = revealNext;
+
+/* PROJECT DETAILS POPUP */
+function openProject(num){
+    let title="", language="", desc="", hostlink="";
+
+    if(num === 1){
+        title = "Personal Portfolio Website";
+        language = "HTML, CSS, JavaScript";
+        desc = "A fully responsive personal portfolio website with multi-page navigation, animations, and popup features.";
+        hostlink = "https://niranjanatamil028.github.io/portfolio/";
+    }
+    if(num === 2){
+        title = "Online Quiz System";
+        language = "HTML, CSS, JavaScript, PHP, MySQL";
+        desc = "An interactive quiz system with timer, score calculation, and database result storage.";
+        hostlink = "http://niranjana-quiz-system.infinityfree.me/";
+    }
+    if(num === 3){
+        title = "Car Rental Website (Front-End)";
+        language = "HTML, CSS, JavaScript";
+        desc = "A user-friendly car rental front-end website with modern UI and responsive layout.";
+        hostlink = "https://luxury-car-rental.netlify.app/";
+    }
+    if(num === 4){
+        title = "Space Invaders Game (Pygame)";
+        language = "Python (Pygame)";
+        desc = "A 2D arcade-style shooting game built using Pygame with enemy movement and scoring.";
+        hostlink = "";
+    }
+
+    let html = `
+        <div class="popup-title">${title}</div>
+        <div class="popup-item"><b>Language Used:</b> ${language}</div>
+        <div class="popup-item"><b>Description:</b> ${desc}</div>
+    `;
+
+    if(hostlink !== ""){
+        html += `<div class="popup-item">
+                     <a class="popup-link-button" href="${hostlink}" target="_blank">Open Project</a>
+                 </div>`;
+    }
+
+    document.getElementById("popup-content").innerHTML = html;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>

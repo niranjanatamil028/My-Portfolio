@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Me - Niranjana</title>
+
+<style>
+/* Load Jasmine Font */
+@font-face {
+  font-family: 'Jasmine';
+  src: url('Jasmine.ttf') format('truetype');
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Jasmine', sans-serif;
+  font-style:italic;
+}
+
+body {
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:white;
+  scroll-behavior: smooth;
+}
+
+header {
+  width:100%;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav a:hover { color:#00a896; }
+
+/* Page Layout */
+.container {
+  padding:150px 40px;
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+}
+
+h2 {
+  color:black;
+  margin-bottom:20px;
+  font-size:32px;
+}
+
+/* About Content Box */
+.about-box {
+  background: rgba(0,0,0,0.5);
+  padding:25px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+/* Line Reveal */
+.line {
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s, transform 0.8s;
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+.line.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<header>
+  <h2 style="color:white;">Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Content -->
+<div class="container">
+  <h2>About Me</h2>
+
+  <div class="about-box" id="aboutBox"></div>
+</div>
+
+<script>
+// Lines for About page reveal
+const aboutLines = [
+  "<p>I'm Niranjana Tamilenthi, a dedicated Computer Science and Engineering student at Velammal Engineering College.</p>",
+  "<p>I have a strong foundation in HTML, CSS, JavaScript, and Java.</p>",
+  "<p>I am passionate about building creative projects and exploring cloud computing and networking.</p>",
+  "<p>I always love learning and improving myself through real-world projects.</p>"
+];
+
+const aboutBox = document.getElementById('aboutBox');
+let i = 0;
+
+function revealAboutLine() {
+  if(i < aboutLines.length){
+    const div = document.createElement('div');
+    div.classList.add('line');
+    div.innerHTML = aboutLines[i];
+    aboutBox.appendChild(div);
+
+    setTimeout(()=>{ div.classList.add('show'); }, 50);
+
+    i++;
+    setTimeout(revealAboutLine, 450);
+  }
+}
+
+window.addEventListener('load', revealAboutLine);
+</script>
+
+</body>
+</html>

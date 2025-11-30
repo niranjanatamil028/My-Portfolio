@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skills - Niranjana</title>
+
+<style>
+/* Jasmine Font */
+@font-face {
+  font-family: 'Jasmine';
+  src: url('Jasmine.ttf') format('truetype');
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Jasmine', sans-serif;
+  font-style:italic;
+}
+
+body {
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:white;
+  scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+header {
+  width:100%;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav a:hover { color:#00a896; }
+
+/* Skills Layout */
+.container {
+  padding:150px 40px;
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+}
+
+h2 {
+  color:black;
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+/* Skill Item Box */
+.skill-box {
+  background: rgba(0,0,0,0.5);
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:12px;
+  font-size:20px;
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s, transform 0.8s;
+}
+
+.skill-box.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+  <h2 style="color:white;">Niranjana Portfolio</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Content -->
+<div class="container">
+  <h2>Skills</h2>
+
+  <div id="skillsList"></div>
+</div>
+
+<script>
+// Skills data
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Java",
+  "Computer Networks",
+  "Cloud Computing",
+  "AWS"
+];
+
+// Reveal skills one by one
+const listContainer = document.getElementById('skillsList');
+let i = 0;
+
+function revealSkill() {
+  if(i < skills.length){
+    const div = document.createElement('div');
+    div.classList.add('skill-box');
+    div.innerHTML = skills[i];
+    listContainer.appendChild(div);
+
+    setTimeout(() => { div.classList.add('show'); }, 50);
+
+    i++;
+    setTimeout(revealSkill, 400);
+  }
+}
+
+window.addEventListener('load', revealSkill);
+</script>
+
+</body>
+</html>
