@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <title>Projects - Niranjana</title>
 
@@ -54,14 +56,12 @@ nav a:hover{ color:#00a896; }
     align-items:center;
 }
 
-/* HEADING */
 h2{
     color:black;
     font-size:32px;
     margin-bottom:20px;
 }
 
-/* BIG SHADED BOX */
 .big-box{
     width:90%;
     max-width:700px;
@@ -73,7 +73,6 @@ h2{
     gap:12px;
 }
 
-/* PROJECT BUTTONS */
 .project-btn{
     background:#00a896;
     color:black;
@@ -86,24 +85,22 @@ h2{
     opacity:0;
     transform:translateY(20px);
 }
+
 .project-btn:hover{
     background:#00917c;
 }
 
-/* LINE REVEAL */
 .show{
     opacity:1 !important;
     transform:translateY(0) !important;
 }
 
-/* NOTE */
 .note{
     color:white;
     text-align:center;
     margin-top:10px;
 }
 
-/* POPUP */
 #popup{
     position:fixed;
     top:0; left:0;
@@ -129,7 +126,6 @@ h2{
     position: relative;
 }
 
-/* CLOSE BUTTON */
 #popup-close{
     position:absolute;
     top:15px;
@@ -142,19 +138,18 @@ h2{
 }
 #popup-close:hover{ color:#00a896; }
 
-/* POPUP TEXT */
 .popup-title{
     font-size:22px;
     font-weight:bold;
     margin-bottom:12px;
     text-align:center;
 }
+
 .popup-item{
     margin-bottom:12px;
     line-height:1.5;
 }
 
-/* Popup live link as button */
 .popup-link-button {
     display: inline-block;
     background: #00a896;
@@ -174,7 +169,6 @@ h2{
     color: white;
 }
 
-/* RESPONSIVE FOR MOBILE */
 @media (max-width:600px){
     #popup-content{
         padding: 20px;
@@ -191,6 +185,7 @@ h2{
     }
 }
 </style>
+
 </head>
 
 <body>
@@ -218,8 +213,8 @@ h2{
         <div class="project-btn" onclick="openProject(2)">Online Quiz System</div>
         <div class="project-btn" onclick="openProject(3)">Car Rental Website (Front-End)</div>
         <div class="project-btn" onclick="openProject(4)">Space Invaders Game (Pygame)</div>
+        <div class="project-btn" onclick="openProject(5)">Cloud-Based Online Weather Prediction App</div>
 
-        <!-- NOTE INSIDE SHADED BOX -->
         <p class="note">* If you want more details, click the particular project name *</p>
 
     </div>
@@ -233,7 +228,8 @@ h2{
 </div>
 
 <script>
-/* LINE BY LINE REVEAL */
+
+/* Line by line reveal */
 const items = document.querySelectorAll('.project-btn');
 let i = 0;
 function revealNext(){
@@ -245,15 +241,15 @@ function revealNext(){
 }
 window.onload = revealNext;
 
-/* PROJECT DETAILS POPUP */
+/* POPUP DATA */
 function openProject(num){
     let title="", language="", desc="", hostlink="";
 
     if(num === 1){
         title = "Personal Portfolio Website";
-        language = "HTML, CSS, JavaScript";
+        language = "HTML, CSS, JavaScript (DOM)";
         desc = "A fully responsive personal portfolio website with multi-page navigation, animations, and popup features.";
-        hostlink = "https://niranjanatamil028.github.io/portfolio/";
+        hostlink = "https://niranjanatamil028.github.io/My-Portfolio/";
     }
     if(num === 2){
         title = "Online Quiz System";
@@ -273,6 +269,12 @@ function openProject(num){
         desc = "A 2D arcade-style shooting game built using Pygame with enemy movement and scoring.";
         hostlink = "";
     }
+    if(num === 5){
+        title = "Cloud-Based Online Weather Prediction App";
+        language = "Frontend: HTML, CSS, JavaScript<br>Backend: Express.js, Node.js, API Keys";
+        desc = "A cloud-based online weather prediction app to get current location weather and weather in all cities.";
+        hostlink = "https://weather-app-ijcw.onrender.com";
+    }
 
     let html = `
         <div class="popup-title">${title}</div>
@@ -281,9 +283,11 @@ function openProject(num){
     `;
 
     if(hostlink !== ""){
-        html += `<div class="popup-item">
-                     <a class="popup-link-button" href="${hostlink}" target="_blank">Open Project</a>
-                 </div>`;
+        html += `
+            <div class="popup-item">
+                <a class="popup-link-button" href="${hostlink}" target="_blank">Open Project</a>
+            </div>
+        `;
     }
 
     document.getElementById("popup-content").innerHTML = html;
@@ -293,6 +297,7 @@ function openProject(num){
 function closePopup(){
     document.getElementById("popup").style.display = "none";
 }
+
 </script>
 
 </body>
