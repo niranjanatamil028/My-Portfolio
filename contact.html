@@ -61,7 +61,7 @@ h2{
     margin-bottom:20px;
 }
 
-/* Shaded background box */
+/* Big shaded box */
 .big-box{
     width:90%;
     max-width:600px;
@@ -73,7 +73,7 @@ h2{
     gap:12px;
 }
 
-/* Individual contact boxes */
+/* Contact Items */
 .contact-item{
     background:#00a896;
     color:black;
@@ -90,6 +90,7 @@ h2{
     font-weight:bold;
     text-decoration:none;
 }
+
 .contact-item a:hover{
     color:white;
 }
@@ -122,8 +123,7 @@ h2{
 
     <div class="big-box">
 
-        <div class="contact-item">📞 Mobile: 9360352494</div>
-
+        <!-- EMAIL -->
         <div class="contact-item">
             📧 Email:
             <a href="mailto:niranjanatamil028@gmail.com">
@@ -131,6 +131,7 @@ h2{
             </a>
         </div>
 
+        <!-- LINKEDIN -->
         <div class="contact-item">
             🔗 LinkedIn:
             <a href="https://www.linkedin.com/in/niranjana-tamilenthi" target="_blank">
@@ -138,11 +139,19 @@ h2{
             </a>
         </div>
 
+        <!-- GITHUB -->
+        <div class="contact-item">
+            🐙 GitHub:
+            <a href="https://github.com/niranjanatamil028" target="_blank">
+                https://github.com/niranjanatamil028
+            </a>
+        </div>
+
     </div>
 </div>
 
 <script>
-// line-by-line reveal
+// line-by-line reveal animation
 const items = document.querySelectorAll('.contact-item');
 let i = 0;
 
@@ -158,3 +167,4 @@ window.onload = revealNext;
 
 </body>
 </html>
+
